@@ -17,7 +17,8 @@ Live at [opalslab.org](https://opalslab.org).
 ## Built with
 
 [Astro](https://astro.build) — a static site, no backend or database. Deployed
-via Netlify, which rebuilds and redeploys automatically on every push to `main`.
+via GitHub Pages (see `.github/workflows/deploy.yml`), which rebuilds and
+redeploys automatically on every push to `main`.
 
 Design follows the OPALS Lab brand style guide — color-block layout inspired by
 the logo, brand fonts self-hosted in `public/fonts/`.
