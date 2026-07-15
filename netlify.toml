@@ -1,0 +1,9 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "20"
+
+# Astro's static build outputs dist/404.html (see src/pages/404.astro),
+# which Netlify serves automatically for unmatched paths — no redirect rule needed.

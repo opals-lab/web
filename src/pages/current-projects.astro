@@ -1,0 +1,105 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+
+// EDIT ME: replace these three template entries with your actual projects.
+// `status` renders as a small pill — try "Active", "Ongoing", "Recruiting", "Pilot", etc.
+const projects = [
+  {
+    status: 'Tool',
+    title: 'Community Data Libraries',
+    icon: 'book',
+    summary:
+      'Community data libraries bring together local public data on topics like health, education, and the environment into one easy-to-search website, connecting each dataset to teacher-friendly lesson plans so communities and classrooms can turn raw numbers into real understanding.',
+    tags: ['Place-Based', 'K-12 Data Science', 'Classroom Resources'],
+  },
+  {
+    status: 'Research',
+    title: 'Examining Place and Teacher Agency',
+    icon: 'map',
+    summary:
+      'The majority of curriculum and textbooks are written to be used nationwide. We\'re working to understand how place shapes learning when teachers are supported with the agency and resources to create their own curriculum materials.',
+    tags: ['Place-Based', 'Teacher Agency', 'Curriculum Development'],
+  },
+  {
+    status: 'Partnerships',
+    title: 'Rural Student Success',
+    icon: 'school',
+    summary:
+      'In data-driven school improvement efforts, it is key to contextualize student achievement data. How does this process look in rural schools and what resources are needed to support this work so that it is deeply grounded in the strengths and needs of the local rural context?',
+    tags: ['Professional Learning', 'Rural Education', 'Data Analysis'],
+  },
+] as const;
+---
+
+<BaseLayout title="Current Projects" description="What OPALS Lab is working on right now.">
+  <PageHero
+    eyebrow="Current Projects"
+    title="What we're working on right now."
+    lede="An overview of the studies, partnerships, and tools currently underway in the lab."
+  />
+
+  <section class="section projects">
+    <div class="container">
+      <div class="grid grid--2">
+        {projects.map((p) => (
+          <article class="projectCard">
+            <span class="tag projectCard__status">{p.status}</span>
+            <div class="projectCard__head">
+              <Icon name={p.icon} class="projectCard__icon" />
+              <h3>{p.title}</h3>
+            </div>
+            <p>{p.summary}</p>
+            <ul class="projectCard__tags">
+              {p.tags.map((t) => <li>{t}</li>)}
+            </ul>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .projects { padding-top: 64px; }
+  .projectCard {
+    background: var(--teal-pale);
+    padding: 32px;
+    border-radius: 2px;
+    border-left: 4px solid var(--teal-dark);
+  }
+  .projectCard__status { margin-bottom: 14px; }
+  .projectCard__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+  }
+  .projectCard__head h3 { margin-bottom: 0; }
+  :global(.projectCard__icon) {
+    flex: none;
+    display: block;
+    width: 34px;
+    height: 34px;
+    fill: var(--teal-deep);
+    stroke: var(--teal-deep);
+    stroke-width: 1.6;
+  }
+  .projectCard p { color: var(--charcoal); margin-bottom: 18px; }
+  .projectCard__tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .projectCard__tags li {
+    font-family: var(--font-cond);
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gray);
+    border: 1px solid var(--teal-mid);
+    padding: 4px 10px;
+    border-radius: 2px;
+  }
+</style>

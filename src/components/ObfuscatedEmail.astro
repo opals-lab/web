@@ -1,0 +1,27 @@
+---
+// Renders a mailto link without ever putting a plain "user@domain" string in
+// the page source. The real address is assembled client-side (see the
+// matching script in BaseLayout.astro) from reversed fragments, so simple
+// scrapers that regex static HTML for email addresses come up empty.
+interface Props {
+  user: string;
+  domain: string;
+  subject?: string;
+  class?: string;
+  label?: string;
+}
+const { user, domain, subject, class: className, label } = Astro.props;
+const revUser = [...user].reverse().join('');
+const revDomain = [...domain].reverse().join('');
+const fallbackText = label ?? `${user} [at] ${domain.replace('.', ' [dot] ')}`;
+---
+
+<a
+  href="#"
+  class={className}
+  data-eu={revUser}
+  data-ed={revDomain}
+  data-es={subject}
+  data-has-label={label ? '1' : '0'}
+  rel="nofollow"
+>{fallbackText}</a>

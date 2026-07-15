@@ -1,0 +1,106 @@
+---
+import ColorBlocks from './ColorBlocks.astro';
+import ObfuscatedEmail from './ObfuscatedEmail.astro';
+
+const year = new Date().getFullYear();
+---
+
+<footer class="footer">
+  <ColorBlocks variant="strip" />
+  <div class="container footer__inner">
+    <div class="footer__brand">
+      <span class="footer__wordmark">OPALS<span class="script-accent">lab</span></span>
+      <p class="footer__tagline">Opportunity, Place, and Learning in STEM</p>
+      <p class="footer__addr">University of Tennessee, Knoxville</p>
+    </div>
+
+    <nav class="footer__links" aria-label="Footer">
+      <a href="/our-mission">Our Mission</a>
+      <a href="/our-team">Our Team</a>
+      <a href="/current-projects">Current Projects</a>
+      <a href="/research-products">Research Products</a>
+      <a href="/work-with-us">Work With Us</a>
+    </nav>
+
+    <div class="footer__contact">
+      <span class="eyebrow">Get in touch</span>
+      <ObfuscatedEmail class="footer__email" user="info" domain="opalslab.org" />
+    </div>
+  </div>
+
+  <div class="footer__bottom">
+    <div class="container footer__bottomInner">
+      <span>&copy; {year} OPALS Lab. All rights reserved.</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: var(--charcoal);
+    color: var(--white);
+  }
+  .footer__inner {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1fr;
+    gap: 40px;
+    padding: 56px 28px 48px;
+  }
+  .footer__wordmark {
+    font-family: var(--font-serif);
+    font-size: 1.7rem;
+    color: var(--white);
+  }
+  .footer__tagline {
+    font-family: var(--font-cond);
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    font-size: 0.85rem;
+    margin: 10px 0 4px;
+  }
+  .footer__addr {
+    color: #cfd3d2;
+    font-size: 0.92rem;
+    margin: 0;
+  }
+  .footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  .footer__links a {
+    text-decoration: none;
+    color: #e4e6e5;
+    font-size: 0.96rem;
+  }
+  .footer__links a:hover { color: var(--teal-light); }
+
+  .footer__contact { display: flex; flex-direction: column; }
+  .footer__contact .eyebrow { color: var(--teal-light); margin-bottom: 0.6em; }
+  :global(.footer__email) {
+    text-decoration: none;
+    color: var(--white);
+    font-family: var(--font-cond);
+    font-size: 1.05rem;
+    letter-spacing: 0.03em;
+    border-bottom: 1px solid var(--teal-dark);
+    padding-bottom: 2px;
+    width: fit-content;
+  }
+
+  .footer__bottom {
+    border-top: 1px solid #4a4a4a;
+  }
+  .footer__bottomInner {
+    padding: 18px 28px;
+    font-size: 0.82rem;
+    color: #a9aba9;
+    font-family: var(--font-cond);
+    letter-spacing: 0.04em;
+  }
+
+  @media (max-width: 760px) {
+    .footer__inner { grid-template-columns: 1fr; }
+  }
+</style>

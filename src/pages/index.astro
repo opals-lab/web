@@ -1,0 +1,311 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ColorBlocks from '../components/ColorBlocks.astro';
+import Icon from '../components/Icon.astro';
+
+const exploreLinks = [
+  { href: '/our-mission', label: 'Our Mission', copy: 'What we study, and why it matters.', icon: 'map-marker' },
+  { href: '/our-team', label: 'Our Team', copy: 'The people behind the research.', icon: 'key' },
+  { href: '/current-projects', label: 'Current Projects', copy: "What we're working on right now.", icon: 'lightbulb' },
+  { href: '/research-products', label: 'Research Products', copy: 'Publications, talks, and tools.', icon: 'atom' },
+] as const;
+---
+
+<BaseLayout
+  title="Opportunity, Place, and Learning in STEM Lab"
+  description="OPALS Lab uses data science and AI to understand and address how place shapes learning and opportunity in STEM."
+>
+  <section class="hero">
+    <ColorBlocks variant="scatter" />
+    <div class="container hero__bannerWrap">
+      <img
+        src="/images/opals-logo-wide.png"
+        alt=""
+        class="hero__banner"
+        width="2143"
+        height="622"
+      />
+    </div>
+    <div class="container hero__inner">
+      <h1 class="hero__headline">
+        Opportunity, Place, and Learning in <span class="hero__highlight">STEM</span>
+      </h1>
+      <p class="lede hero__lede">
+        We use tools &mdash; like data science and AI &mdash; to understand and address
+        how place shapes learning and opportunity in STEM.
+      </p>
+      <div class="hero__ctas">
+        <a href="/our-mission" class="btn">Our Mission</a>
+        <a href="/work-with-us" class="btn btn--outline">Want to Work With Us?</a>
+      </div>
+    </div>
+  </section>
+
+  <ColorBlocks variant="strip" />
+
+  <section class="section explore">
+    <div class="container">
+      <span class="eyebrow">Explore the lab</span>
+      <div class="grid grid--2 explore__grid">
+        {exploreLinks.map((l) => (
+          <a class="exploreCard" href={l.href}>
+            <div class="exploreCard__head">
+              <Icon name={l.icon} class="exploreCard__icon" />
+              <h3>{l.label}</h3>
+            </div>
+            <p>{l.copy}</p>
+            <span class="exploreCard__arrow" aria-hidden="true">&rarr;</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--charcoal quote">
+    <img class="quote__map" src="/images/quote-map.svg" alt="" aria-hidden="true" />
+    <!--
+    <div class="container quote__inner">
+      <p class="quote__text">
+        &ldquo;Where you learn shapes whether you see yourself as a scientist. Our work is
+        about widening that door.&rdquo;
+      </p>
+      <span class="quote__sign">&mdash; OPALS<span class="script-accent">lab</span></span>
+    </div>
+    -->
+  </section>
+
+  <section class="section cta">
+    <div class="cta__marks" aria-hidden="true">
+      <span class="cta__mark m1">?</span>
+      <span class="cta__mark m2">?</span>
+      <span class="cta__mark m3">?</span>
+      <span class="cta__mark m4">?</span>
+      <span class="cta__mark m5">?</span>
+      <span class="cta__mark m6">?</span>
+      <span class="cta__mark m7">?</span>
+      <span class="cta__mark m8">?</span>
+      <span class="cta__mark m9">?</span>
+      <span class="cta__mark m10">?</span>
+    </div>
+    <div class="container cta__inner">
+      <div>
+        <span class="eyebrow">Join the lab</span>
+        <h2>Want to work with us?</h2>
+        <p class="lede">
+          We're always looking for curious, committed students who are interested in
+          questions at the intersection of technology, place, teaching, and learning.
+          See what it's like to join OPALS Lab.
+        </p>
+      </div>
+      <a href="/work-with-us" class="btn">Get Started &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 88px 0 120px;
+  }
+  .hero__inner {
+    position: relative;
+    z-index: 1;
+  }
+  .hero__headline {
+    font-size: clamp(1.9rem, 2.9vw, 2.5rem);
+    font-style: italic;
+    letter-spacing: -0.01em;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+  .hero__lede { max-width: 680px; }
+  .hero__highlight {
+    display: inline-block;
+    background: var(--teal-light);
+    padding: 0 0.18em;
+    transform: rotate(-1.2deg);
+  }
+  .hero__lede { margin-top: 4px; }
+  .hero__ctas {
+    display: flex;
+    gap: 16px;
+    margin-top: 32px;
+    flex-wrap: wrap;
+  }
+  .hero__bannerWrap {
+    position: relative;
+    z-index: 1;
+    margin-bottom: 44px;
+  }
+  .hero__banner {
+    display: block;
+    width: min(760px, 88%);
+    height: auto;
+    margin: 0 auto 0 0;
+    transform: rotate(-1.3deg);
+    border-radius: 2px;
+  }
+
+  .explore__grid { margin-top: 28px; }
+  .exploreCard {
+    display: block;
+    text-decoration: none;
+    color: var(--charcoal);
+    background: var(--teal-pale);
+    padding: 32px;
+    border-radius: 2px;
+    position: relative;
+    transition: background 0.15s ease, transform 0.15s ease;
+  }
+  .exploreCard:hover { background: var(--teal-light); transform: translateY(-2px); }
+  .exploreCard__head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+  :global(.exploreCard__icon) {
+    flex: none;
+    display: block;
+    width: 22px;
+    height: 22px;
+    fill: var(--teal-dark);
+    stroke: var(--teal-dark);
+    stroke-width: 1.6;
+  }
+  .exploreCard h3 { margin-bottom: 0; }
+  .exploreCard p { color: var(--charcoal); margin: 0; margin-left: 34px; }
+  .exploreCard__arrow {
+    position: absolute;
+    top: 28px;
+    right: 28px;
+    font-size: 1.4rem;
+    color: var(--charcoal);
+  }
+
+  .quote { position: relative; overflow: hidden; min-height: 280px; }
+  .quote__map {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transform: scale(2);
+    opacity: 0.7;
+  }
+  .quote__inner { position: relative; z-index: 1; text-align: center; max-width: 780px; margin: 0 auto; }
+  .quote__text {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    line-height: 1.4;
+    color: var(--white);
+    margin: 0 0 20px;
+  }
+  .quote__sign {
+    display: inline-block;
+    font-family: var(--font-serif);
+    color: var(--teal-light);
+    font-size: 1.2rem;
+    letter-spacing: 0.02em;
+  }
+  .quote__sign .script-accent { font-size: 1.35em; margin-left: 0.08em; color: var(--teal-light); }
+
+  .cta {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta__marks {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  .cta__mark {
+    position: absolute;
+    font-family: var(--font-serif);
+    font-weight: 400;
+    color: var(--teal-light);
+    opacity: 0.18;
+    line-height: 1;
+    user-select: none;
+  }
+  .m1 {
+    font-size: clamp(220px, 24vw, 380px);
+    top: -14%;
+    left: -4%;
+    transform: rotate(-8deg);
+  }
+  .m2 {
+    font-size: clamp(160px, 17vw, 280px);
+    bottom: -18%;
+    right: 6%;
+    transform: rotate(6deg);
+  }
+  .m3 {
+    font-size: clamp(120px, 13vw, 210px);
+    top: 12%;
+    right: -3%;
+    transform: rotate(-4deg);
+  }
+  .m4 {
+    font-size: clamp(90px, 9vw, 150px);
+    top: 55%;
+    left: 24%;
+    transform: rotate(10deg);
+  }
+  .m5 {
+    font-size: clamp(70px, 7vw, 120px);
+    top: 4%;
+    left: 44%;
+    transform: rotate(-6deg);
+  }
+  .m6 {
+    font-size: clamp(90px, 10vw, 160px);
+    top: 58%;
+    left: 74%;
+    transform: rotate(9deg);
+  }
+  .m7 {
+    font-size: clamp(60px, 6vw, 100px);
+    top: -8%;
+    left: 68%;
+    transform: rotate(-10deg);
+  }
+  .m8 {
+    font-size: clamp(140px, 16vw, 260px);
+    bottom: -22%;
+    left: 38%;
+    transform: rotate(-7deg);
+  }
+  .m9 {
+    font-size: clamp(90px, 9vw, 150px);
+    bottom: -14%;
+    left: 12%;
+    transform: rotate(8deg);
+  }
+  .m10 {
+    font-size: clamp(110px, 12vw, 190px);
+    bottom: -20%;
+    left: 55%;
+    transform: rotate(5deg);
+  }
+  .cta__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  @media (max-width: 860px) {
+    .hero { padding: 96px 0 88px; }
+    .hero__headline { white-space: normal; }
+    .hero__bannerWrap { margin-bottom: 32px; }
+    .hero__banner { width: 92%; margin: 0 auto; transform: rotate(-0.6deg); }
+  }
+</style>

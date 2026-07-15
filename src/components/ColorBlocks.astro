@@ -1,0 +1,245 @@
+---
+// Decorative geometric motif echoing the uneven color-block grid in the OPALS
+// logo (tall/medium/short rows, alternating pale teal tones + one dark cell).
+// variant: "hero" (big asymmetric grid), "strip" (thin divider row), "corner"
+interface Props {
+  variant?: 'hero' | 'scatter' | 'strip' | 'corner';
+}
+const { variant = 'hero' } = Astro.props;
+---
+
+{variant === 'hero' && (
+  <div class="blocks blocks--hero" aria-hidden="true">
+    <span class="cell c1"></span>
+    <span class="cell c2"></span>
+    <span class="cell c3"></span>
+    <span class="cell c4"></span>
+    <span class="cell c5"></span>
+    <span class="cell c6"></span>
+  </div>
+)}
+
+{variant === 'scatter' && (
+  <div class="blocks blocks--scatter" aria-hidden="true">
+    <span class="d d1">
+      <svg class="d1__pin" viewBox="0 0 512 512">
+        <path d="M256,0C159.969,0,82.109,77.859,82.109,173.906c0,100.719,80.016,163.688,123.297,238.719
+          C246.813,484.406,246.781,512,256,512s9.188-27.594,50.594-99.375c43.297-75.031,123.297-138,123.297-238.719
+          C429.891,77.859,352.031,0,256,0z M256,240.406c-36.734,0-66.516-29.781-66.516-66.5c0-36.75,29.781-66.531,66.516-66.531
+          s66.516,29.781,66.516,66.531C322.516,210.625,292.734,240.406,256,240.406z" />
+      </svg>
+    </span>
+    <span class="d d2">
+      <svg class="d2__icon" viewBox="0 0 24 24" fill="none">
+        <path d="M12.3212 10.6852L4 19L6 21M7 16L9 18M20 7.5C20 9.98528 17.9853 12 15.5 12C13.0147 12 11 9.98528 11 7.5C11 5.01472 13.0147 3 15.5 3C17.9853 3 20 5.01472 20 7.5Z" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+    </span>
+    <span class="d d3">
+      <svg class="d3__icon" viewBox="0 0 256 229">
+        <path d="M129.593,64.314c23.543-30.833,44.788-45.063,54.751-45.063c1.37,0,2.507,0.258,3.386,0.775
+          c5.324,3.076,6.332,16.619,2.766,34.505c5.686,1.086,11.14,2.326,16.335,3.722c5.583-26.958,1.861-45.619-10.649-52.856
+          c-12.716-7.34-30.498-1.318-51.434,17.42c-12.018,10.754-24.622,25.416-36.339,42.062c-11.687,0.676-23.237,1.953-34.188,3.813
+          c-7.913-26.6-7.343-44.886-0.783-48.667c0.879-0.517,2.016-0.775,3.386-0.775c7.289,0,19.255,7.237,32.023,19.385
+          c3.618-4.471,7.263-8.736,10.907-12.742C97.657,5.036,78.246-2.253,65.013,5.397C52.297,12.712,48.626,31.114,54.39,58.64
+          c0.901,4.301,2.036,8.788,3.376,13.409C25.626,79.809,2,93.278,2,111.935c0,15.378,16.231,28.637,45.696,37.322l1.241,0.362
+          l0.362-1.215c1.344-4.42,2.869-8.917,4.523-13.388l0.465-1.292l-1.318-0.388c-20.392-5.97-34.065-14.577-34.065-21.4
+          c0-7.721,16.139-17.594,44.084-24.042c3.821,10.43,8.516,21.254,13.893,32.034c-8.08,17.761-14.137,35.252-17.321,50.473
+          c-5.764,27.5-2.094,45.903,10.623,53.217c3.463,2.016,7.366,3.024,11.605,3.024c10.571,0,23.468-6.384,37.606-18.532
+          c-3.851-3.929-7.625-8.064-11.295-12.38c-10.519,8.891-19.979,14.06-26.105,14.06c-1.344,0-2.481-0.259-3.386-0.776
+          c-8.213-4.751-7.064-32.19,8.403-70.244c24.572,42.417,63.859,87.871,92.371,87.871c4.239,0,8.141-1.008,11.605-3.024h0.026
+          c26.285-15.146,10.054-73.998-16.516-123.493c-6.306-1.008-13.207-1.835-20.729-2.43l0.853,1.447
+          c33.316,57.689,38.795,103.592,27.94,109.872c-0.905,0.517-2.042,0.776-3.386,0.776c-13.13,0-45.98-24.787-77.797-79.891
+          c-2.015-3.492-3.924-6.939-5.738-10.338c3.243-6.601,6.866-13.421,10.907-20.419c3.659-6.338,7.331-12.256,10.986-17.8
+          c3.423-0.101,6.903-0.163,10.466-0.163c66.606,0,109.122,18.222,109.122,30.757c0,6.436-12.199,14.448-30.731,20.367
+          c2.042,5.324,3.903,10.623,5.531,15.843c27.164-8.684,42.078-21.452,42.078-36.21C254,81.266,190.199,64.601,129.593,64.314z
+          M91.919,90.689c-1.915,3.32-3.771,6.67-5.566,10.036c-2.506-5.53-4.744-10.887-6.695-16.017c5.395-0.837,11.099-1.547,17.094-2.107
+          C95.11,85.272,93.492,87.964,91.919,90.689z M111.783,114.85c0,10.231,8.324,18.555,18.555,18.555
+          c10.231,0,18.555-8.324,18.555-18.555s-8.324-18.555-18.555-18.555C120.107,96.294,111.783,104.618,111.783,114.85z" />
+      </svg>
+    </span>
+    <span class="d d4">
+      <svg class="d4__icon" viewBox="0 -8 72 72">
+        <path d="M42.92,41.88H29.08a1.87,1.87,0,1,0,0,3.73H42.92a1.87,1.87,0,1,0,0-3.73Z" />
+        <path d="M32.37,52.9v1A2.08,2.08,0,0,0,34.45,56h3.1a2.08,2.08,0,0,0,2.08-2.08v-1a4.51,4.51,0,0,0,4.21-4.5H28.16A4.51,4.51,0,0,0,32.37,52.9Z" />
+        <path d="M36,0A18.68,18.68,0,0,0,21.3,30.25a81.41,81.41,0,0,1,6.12,9H44.58a80.47,80.47,0,0,1,6.12-9A18.68,18.68,0,0,0,36,0Zm0,6.49a12.05,12.05,0,0,0-12,12,1.87,1.87,0,1,1-3.73,0A15.78,15.78,0,0,1,36,2.76a1.87,1.87,0,1,1,0,3.73Z" />
+      </svg>
+    </span>
+    <span class="d d5"></span>
+  </div>
+)}
+
+{variant === 'strip' && (
+  <div class="blocks blocks--strip" aria-hidden="true">
+    <span class="s s1"></span>
+    <span class="s s2"></span>
+    <span class="s s3"></span>
+    <span class="s s4"></span>
+    <span class="s s5"></span>
+    <span class="s s6"></span>
+    <span class="s s7"></span>
+  </div>
+)}
+
+{variant === 'corner' && (
+  <div class="blocks blocks--corner" aria-hidden="true">
+    <span class="cell k1"></span>
+    <span class="cell k2"></span>
+    <span class="cell k3"></span>
+    <span class="cell k4"></span>
+  </div>
+)}
+
+<style>
+  .blocks { display: grid; }
+
+  /* ---- hero: 2 cols x 3 uneven rows, like the logo ---- */
+  .blocks--hero {
+    grid-template-columns: 1.1fr 1fr;
+    grid-template-rows: 1.25fr 1fr 0.85fr;
+    width: 100%;
+    height: 100%;
+    min-height: 340px;
+    gap: 6px;
+  }
+  .blocks--hero .cell { border-radius: 1px; }
+  .c1 { background: var(--teal-dark); grid-column: 1; grid-row: 1; }
+  .c2 { background: var(--teal-pale); grid-column: 2; grid-row: 1; }
+  .c3 { background: var(--teal-pale); grid-column: 1; grid-row: 2; }
+  .c4 { background: var(--teal-mid); grid-column: 2; grid-row: 2; }
+  .c5 { background: var(--teal-mid); grid-column: 1; grid-row: 3; }
+  .c6 { background: var(--charcoal); grid-column: 2; grid-row: 3; }
+
+  /* ---- scatter: loose, rotated pieces bled across a full-bleed field ---- */
+  .blocks--scatter {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+  .blocks--scatter .d { position: absolute; border-radius: 1px; }
+  .d1 {
+    background: var(--teal-pale);
+    width: 38vw;
+    height: 60%;
+    top: -12%;
+    right: -8vw;
+    transform: rotate(-5deg);
+  }
+  .d1__pin {
+    position: absolute;
+    top: 30%;
+    right: 46%;
+    width: clamp(110px, 14vw, 210px);
+    height: clamp(110px, 14vw, 210px);
+    fill: #d0e6e3;
+    transform: rotate(5deg);
+  }
+  .d2 {
+    background: var(--teal-mid);
+    width: 15vw;
+    height: 34%;
+    bottom: -6%;
+    right: 12vw;
+    transform: rotate(4deg);
+  }
+  .d2__icon {
+    position: absolute;
+    top: 26%;
+    left: 27%;
+    width: clamp(72px, 7vw, 110px);
+    height: clamp(72px, 7vw, 110px);
+    fill: none;
+    stroke: #bad9d5;
+    stroke-width: 1.6;
+    transform: rotate(-4deg);
+  }
+  .d3 {
+    background: var(--teal-dark);
+    width: 120px;
+    height: 120px;
+    bottom: 8%;
+    left: -40px;
+    transform: rotate(9deg);
+  }
+  .d3__icon {
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    width: 54px;
+    height: 54px;
+    fill: #c7dad8;
+    transform: rotate(-9deg);
+  }
+  .d4 {
+    background: var(--teal-light);
+    width: 60px;
+    height: 60px;
+    top: 22%;
+    left: 4%;
+    transform: rotate(-8deg);
+  }
+  .d4__icon {
+    position: absolute;
+    top: 18%;
+    left: 18%;
+    width: 40px;
+    height: 40px;
+    fill: #c7e6e2;
+    transform: rotate(8deg);
+  }
+  .d5 {
+    background: var(--charcoal);
+    width: 90px;
+    height: 14px;
+    bottom: 30%;
+    right: 6%;
+    transform: rotate(-3deg);
+  }
+
+  @media (max-width: 1024px) {
+    .d1__pin,
+    .d2__icon,
+    .d3__icon,
+    .d4__icon {
+      display: none;
+    }
+  }
+
+  @media (max-width: 760px) {
+    .d1 { width: 60vw; right: -20vw; }
+    .d2 { display: none; }
+    .d3 { width: 80px; height: 80px; }
+  }
+
+  /* ---- strip: thin horizontal divider ---- */
+  .blocks--strip {
+    grid-auto-flow: column;
+    grid-template-columns: 1.4fr 1fr 0.6fr 1.8fr 1fr 0.8fr 1.2fr;
+    height: 8px;
+    width: 100%;
+  }
+  .s1 { background: var(--teal-dark); }
+  .s2 { background: var(--teal-pale); }
+  .s3 { background: var(--teal-mid); }
+  .s4 { background: var(--teal-light); }
+  .s5 { background: var(--teal-pale); }
+  .s6 { background: var(--teal-dark); }
+  .s7 { background: var(--teal-mid); }
+
+  /* ---- corner: small 2x2 accent ---- */
+  .blocks--corner {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    width: 84px;
+    height: 84px;
+    gap: 4px;
+  }
+  .k1 { background: var(--teal-dark); }
+  .k2 { background: var(--teal-mid); }
+  .k3 { background: var(--teal-pale); }
+  .k4 { background: var(--charcoal); }
+
+  @media (max-width: 760px) {
+    .blocks--hero { min-height: 220px; }
+  }
+</style>

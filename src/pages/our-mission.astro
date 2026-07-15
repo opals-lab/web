@@ -1,0 +1,258 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Icon from '../components/Icon.astro';
+
+const pillars = [
+  {
+    letter: 'O',
+    word: 'Opportunity',
+    copy: 'The opportunities K-12 students and teachers have to learn about STEM content, and how they are made available in classrooms and communities.',
+  },
+  {
+    letter: 'P',
+    word: 'Place',
+    copy: 'How geography, school context, and local culture shape the STEM learning possibilities for students, teachers, and the community.',
+  },
+  {
+    letter: 'L',
+    word: 'Learning',
+    copy: 'What is taken up, understood, and applied by students, teacher learners, and the community, and the role of space and place in these processes.',
+  },
+  {
+    letter: 'S',
+    word: 'in STEM',
+    copy: 'Grounded in science, technology, engineering, and math contexts, particularly focused on K-12 and community learning.',
+  },
+];
+
+const approach = [
+  {
+    title: 'Data-driven',
+    copy: 'We use quantitative, qualitative, and mixed-methods approaches — including data science and AI — to investigate the intersection of space, learning, and opportunity.',
+  },
+  {
+    title: 'Place-based',
+    copy: 'Place and space shape if, how, and what people learn. We take seriously the role of place, culture, and geography in the way learning opportunities are presented, facilitated, and supported.',
+  },
+  {
+    title: 'Relevant to Practice',
+    copy: 'We deeply value the complex and meaningful work that is teaching, and we work to support teachers in meaningful, practical ways through our projects and research.',
+  },
+];
+---
+
+<BaseLayout
+  title="Our Mission"
+  description="OPALS Lab examines how place shapes learning and opportunity in STEM, using data-driven, place-based research grounded in classroom practice."
+>
+  <PageHero
+    eyebrow="Our Mission"
+    title="Examining and addressing how place shapes learning in STEM."
+    lede="OPALS Lab studies the spatiality of learning and teaching — from spatial reasoning, to the physical orientations of classrooms, to geography. Space is not neutral. We use cutting-edge technologies and methods to understand it."
+  />
+
+  <section class="section pillars">
+    <div class="container">
+      <span class="eyebrow">What OPALS stands for</span>
+      <div class="grid grid--2 pillars__grid">
+        {pillars.slice(0, 2).map((p) => (
+          <div class="pillar">
+            <span class="pillar__letter">{p.letter}</span>
+            <div>
+              <h3>{p.word}</h3>
+              <p>{p.copy}</p>
+            </div>
+          </div>
+        ))}
+        <div class="pillars__divider" aria-hidden="true">
+          <svg class="pillars__swash" viewBox="0 0 240 24" preserveAspectRatio="none">
+            <path d="M0,12 C40,-6 60,30 100,12 C140,-6 160,30 200,12 C210,8 220,10 240,12" />
+          </svg>
+          <span class="pillars__and">A<span class="script-accent">nd</span></span>
+          <svg class="pillars__swash" viewBox="0 0 240 24" preserveAspectRatio="none">
+            <path d="M0,12 C40,-6 60,30 100,12 C140,-6 160,30 200,12 C210,8 220,10 240,12" />
+          </svg>
+        </div>
+        {pillars.slice(2).map((p) => (
+          <div class="pillar">
+            <span class="pillar__letter">{p.letter}</span>
+            <div>
+              <h3>{p.word}</h3>
+              <p>{p.copy}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--pale approach">
+    <div class="container">
+      <span class="eyebrow">Our approach</span>
+      <h2>How we work</h2>
+      <div class="grid grid--3 approach__grid">
+        {approach.map((a) => (
+          <div class="approachCard">
+            <h3>{a.title}</h3>
+            <p>{a.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section cta">
+    <div class="cta__marks" aria-hidden="true">
+      <Icon name="glasses" class="cta__mark m1" />
+      <Icon name="glasses" class="cta__mark m2" />
+      <Icon name="glasses" class="cta__mark m3" />
+      <Icon name="glasses" class="cta__mark m4" />
+      <Icon name="glasses" class="cta__mark m5" />
+      <Icon name="glasses" class="cta__mark m6" />
+    </div>
+    <div class="container cta__inner">
+      <div>
+        <span class="eyebrow">Curious about the details?</span>
+        <h2>See what we're working on right now.</h2>
+      </div>
+      <a href="/current-projects" class="btn">Current Projects &rarr;</a>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .pillars__grid { margin-top: 28px; }
+  .pillar {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+  }
+  .pillar__letter {
+    font-family: var(--font-serif);
+    font-size: 2.6rem;
+    line-height: 1;
+    color: var(--white);
+    background: var(--charcoal);
+    width: 68px;
+    height: 68px;
+    min-width: 68px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+  }
+  .pillar h3 { margin-bottom: 6px; }
+  .pillar p { color: var(--charcoal); margin: 0; }
+
+  .pillars__divider {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin: -4px 0;
+  }
+  .pillars__and {
+    font-family: var(--font-serif);
+    font-size: 3.2rem;
+    color: var(--teal-dark);
+    white-space: nowrap;
+  }
+  .pillars__and .script-accent {
+    font-size: 0.65em;
+  }
+  .pillars__swash {
+    flex: 1 1 0;
+    min-width: 0;
+    max-width: 220px;
+    width: 100%;
+    height: 20px;
+  }
+  .pillars__swash path {
+    fill: none;
+    stroke: var(--teal-dark);
+    stroke-width: 3;
+    stroke-linecap: round;
+  }
+
+  .approach h2 { margin-top: 6px; }
+  .approach__grid { margin-top: 28px; }
+  .approachCard {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 2px;
+    border-top: 3px solid var(--teal-dark);
+  }
+  .approachCard h3 { margin-bottom: 10px; }
+  .approachCard p { margin: 0; color: var(--charcoal); }
+
+  .cta {
+    position: relative;
+    overflow: hidden;
+  }
+  .cta__marks {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  :global(.cta__mark) {
+    position: absolute;
+    stroke: var(--teal-light);
+    stroke-width: 0.9;
+    opacity: 0.35;
+  }
+  :global(.m1) {
+    width: clamp(160px, 18vw, 260px);
+    top: -12%;
+    left: -4%;
+    transform: rotate(-8deg);
+  }
+  :global(.m2) {
+    width: clamp(120px, 13vw, 200px);
+    bottom: -16%;
+    right: 4%;
+    transform: rotate(6deg);
+  }
+  :global(.m3) {
+    width: clamp(90px, 10vw, 150px);
+    top: 14%;
+    right: -2%;
+    transform: rotate(-4deg);
+  }
+  :global(.m4) {
+    width: clamp(70px, 7vw, 110px);
+    top: 55%;
+    left: 22%;
+    transform: rotate(10deg);
+  }
+  :global(.m5) {
+    width: clamp(55px, 5.5vw, 90px);
+    top: 6%;
+    left: 46%;
+    transform: rotate(-6deg);
+  }
+  :global(.m6) {
+    width: clamp(70px, 7.5vw, 120px);
+    bottom: -10%;
+    left: 58%;
+    transform: rotate(9deg);
+  }
+  .cta__inner {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+  .cta h2 { margin-top: 4px; }
+  :global(.cta__glasses) {
+    width: 190px;
+    height: auto;
+    margin-top: 20px;
+    transform: rotate(-6deg);
+  }
+</style>

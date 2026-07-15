@@ -1,0 +1,88 @@
+---
+import Icon from './Icon.astro';
+
+interface Props {
+  eyebrow: string;
+  title: string;
+  lede?: string;
+}
+const { eyebrow, title, lede } = Astro.props;
+
+const accentCells = [
+  { icon: 'key', bg: 'var(--teal-dark)' },
+  { icon: 'map-marker', bg: 'var(--teal-mid)' },
+  { symbol: '&', bg: 'var(--gray)' },
+  { icon: 'lightbulb', bg: 'var(--teal-light)' },
+  { icon: 'atom', bg: 'var(--charcoal)' },
+] as const;
+---
+
+<section class="pageHero">
+  <div class="container pageHero__inner">
+    <div class="pageHero__text">
+      <span class="eyebrow">{eyebrow}</span>
+      <h1>{title}</h1>
+      {lede && <p class="lede">{lede}</p>}
+    </div>
+    <div class="pageHero__accent" aria-hidden="true">
+      {accentCells.map((c) => (
+        <span class="pageHero__accentCell" style={`background:${c.bg}`}>
+          {'icon' in c
+            ? <Icon name={c.icon} class="pageHero__accentIcon" />
+            : <span class="pageHero__accentSymbol">{c.symbol}</span>}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .pageHero {
+    background: var(--teal-pale);
+    padding: 72px 0 56px;
+  }
+  .pageHero__inner {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 40px;
+  }
+  .pageHero__text { max-width: 640px; }
+  .pageHero__accent {
+    display: flex;
+    gap: 6px;
+    flex-shrink: 0;
+  }
+  .pageHero__accentCell {
+    width: 44px;
+    height: 44px;
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .pageHero__accentCell:last-child :global(.pageHero__accentIcon) {
+    fill: var(--white);
+    stroke: var(--white);
+  }
+  :global(.pageHero__accentIcon) {
+    width: 22px;
+    height: 22px;
+    fill: var(--charcoal);
+    stroke: var(--charcoal);
+    stroke-width: 1.6;
+  }
+  .pageHero__accentSymbol {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--white);
+  }
+
+  @media (max-width: 760px) {
+    .pageHero { padding: 52px 0 40px; }
+    .pageHero__inner { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .pageHero__accentCell { width: 38px; height: 38px; }
+  }
+</style>

@@ -1,0 +1,255 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import ObfuscatedEmail from '../components/ObfuscatedEmail.astro';
+import Icon from '../components/Icon.astro';
+
+const lookingFor = [
+  'You are curious about how spatial relationships (physical, geographic, etc.) shape teaching and learning.',
+  'You are interested in formal or informal teacher teacher learning opportunities, particularly in STEM.',
+  'You would like to learn more about how data science and AI can be methodological tools to investigate the complexities of teaching and learning',
+  'You are passionate about expanding robust STEM learning opportunities into rural and other geographic communities.',
+];
+
+const programs = [
+  {
+    label: 'M.S. in Computing, AI, and Data in Education (CADE)',
+    url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/computing-ai-and-data-in-education-cade/',
+  },
+  {
+    label: 'Ph.D. in Teacher Education',
+    url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/stem-education/',
+  },
+  {
+    label: 'Ph.D. in Learning, Design, and Technology (LDT)',
+    url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/learning-design-and-technology/',
+  },
+];
+
+const expect = [
+  {
+    title: 'Ownership of ideas with structured mentoring',
+    copy: 'Every Ph.D. student completes an annual Individual Development Plan with their advisor — a real conversation about goals, skills, and support, not a formality. You shape what you want out of the doctoral experience and have support in seeing your plans and ideas through.',
+  },
+  {
+    title: 'Room to grow your own questions and space to think deeply',
+    copy: 'You will contribute to ongoing lab projects and be supported in developing research questions of your own. This includes valuing deep conversations and opportunities to develop ideas as a component of high-quality research processes.',
+  },
+  {
+    title: 'A collaborative lab culture',
+    copy: 'Plan on regular lab meetings, an open door, and a welcoming environment. OPALS lab is collaborative not competitive. Our research is a shared journey, honoring the varied expertise, ideas, and contributions that are key to team science.',
+  },
+];
+---
+
+<BaseLayout
+  title="Want to Work With Us?"
+  description="Prospective graduate students: Is OPALS Lab a good fit for you?"
+>
+  <PageHero
+    eyebrow="Join the Lab"
+    title="Want to work with us?"
+    lede="OPALS Lab is looking for graduate students who are interested in questions around STEM teaching and learning, place and space, and/or data and AI. Here's what to know before you reach out."
+  />
+
+  <section class="section">
+    <div class="container">
+      <span class="eyebrow">Is OPALS Lab a good fit for you?</span>
+      <ul class="checklist">
+        {lookingFor.map((item) => (
+          <li>
+            <span class="checklist__mark" aria-hidden="true"></span>
+            <span>{item}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--pale">
+    <div class="container">
+      <span class="eyebrow">What you can expect</span>
+      <h2>What you'll find here.</h2>
+      <div class="grid grid--3 expect__grid">
+        {expect.map((e) => (
+          <div class="expectCard">
+            <h3>{e.title}</h3>
+            <p>{e.copy}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="section apply">
+    <div class="apply__marks" aria-hidden="true">
+      <Icon name="email" class="apply__mark m1" />
+      <Icon name="email" class="apply__mark m2" />
+      <Icon name="email" class="apply__mark m3" />
+      <Icon name="email" class="apply__mark m4" />
+      <Icon name="email" class="apply__mark m5" />
+      <Icon name="email" class="apply__mark m6" />
+      <Icon name="email" class="apply__mark m7" />
+      <Icon name="email" class="apply__mark m8" />
+    </div>
+    <div class="container apply__inner">
+      <div>
+        <span class="eyebrow">How to apply</span>
+        <h2>Get in touch.</h2>
+        <p class="lede">Dr. Boles is currently accepting students for the:</p>
+        <ul class="acceptingList">
+          {programs.map((p) => (
+            <li><a href={p.url} target="_blank" rel="noopener noreferrer">{p.label}</a></li>
+          ))}
+        </ul>
+        <p class="lede">
+          The first step is simple — reach out to Dr. Boles with a short note
+          about your research interests and your CV/resume.
+        </p>
+        <ObfuscatedEmail
+          user="klboles"
+          domain="opalslab.org"
+          subject="Prospective student - OPALS Lab"
+          label="Contact Dr. Boles →"
+          class="btn apply__btn"
+        />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    margin-top: 24px;
+    max-width: 720px;
+  }
+  .checklist li {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    font-size: 1.05rem;
+    line-height: 1.55;
+  }
+  .checklist__mark {
+    width: 12px;
+    height: 12px;
+    min-width: 12px;
+    margin-top: 7px;
+    background: var(--teal-dark);
+    border-radius: 1px;
+  }
+
+  .expect__grid { margin-top: 28px; }
+  .expectCard {
+    background: var(--white);
+    padding: 28px;
+    border-radius: 2px;
+    border-top: 3px solid var(--charcoal);
+  }
+  .expectCard h3 { margin-bottom: 10px; }
+  .expectCard p { margin: 0; color: var(--charcoal); }
+
+  .apply {
+    position: relative;
+    overflow: hidden;
+  }
+  .apply__marks {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+  }
+  :global(.apply__mark) {
+    position: absolute;
+    fill: var(--teal-dark);
+    opacity: 0.35;
+  }
+  :global(.apply .m1) {
+    width: clamp(90px, 10vw, 150px);
+    top: -10%;
+    left: -3%;
+    transform: rotate(-8deg);
+  }
+  :global(.apply .m2) {
+    width: clamp(60px, 6.5vw, 100px);
+    bottom: -8%;
+    right: 3%;
+    transform: rotate(6deg);
+  }
+  :global(.apply .m3) {
+    width: clamp(50px, 5.5vw, 80px);
+    top: 16%;
+    right: -2%;
+    transform: rotate(-4deg);
+  }
+  :global(.apply .m4) {
+    width: clamp(40px, 4.5vw, 65px);
+    top: 60%;
+    left: 20%;
+    transform: rotate(10deg);
+  }
+  :global(.apply .m5) {
+    width: clamp(35px, 3.5vw, 55px);
+    top: 8%;
+    left: 48%;
+    transform: rotate(-6deg);
+  }
+  :global(.apply .m6) {
+    width: clamp(45px, 5vw, 70px);
+    bottom: -6%;
+    left: 62%;
+    transform: rotate(9deg);
+  }
+  :global(.apply .m7) {
+    width: clamp(55px, 6vw, 90px);
+    top: 38%;
+    right: 18%;
+    transform: rotate(-10deg);
+  }
+  :global(.apply .m8) {
+    width: clamp(40px, 4.5vw, 65px);
+    top: 68%;
+    right: 32%;
+    transform: rotate(7deg);
+  }
+  .apply__inner {
+    position: relative;
+    z-index: 1;
+  }
+
+  :global(.apply__btn) { margin-top: 24px; }
+
+  .acceptingList {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 1.2em;
+    max-width: 62ch;
+  }
+  .acceptingList li {
+    position: relative;
+    padding-left: 20px;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--charcoal);
+  }
+  .acceptingList li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.6em;
+    width: 8px;
+    height: 8px;
+    background: var(--teal-dark);
+    border-radius: 1px;
+  }
+  .acceptingList a {
+    color: var(--teal-deep);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .acceptingList a:hover { color: var(--black); }
+</style>
