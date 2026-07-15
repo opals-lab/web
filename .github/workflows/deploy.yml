@@ -23,9 +23,12 @@ jobs:
 
       - name: Install, build, and upload your site
         uses: withastro/action@v3
+        with:
+          node-version: 22
         # Uses the astro.config.mjs in this repo for `site`/`base`.
         # If you deploy this as a *project* page (github.com/you/repo-name),
         # make sure `base: '/repo-name'` is set in astro.config.mjs first.
+        # Astro 7 requires Node >=22.12.0 — the action defaults to Node 20.
 
   deploy:
     needs: build
