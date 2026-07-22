@@ -13,15 +13,19 @@ const lookingFor = [
 
 const programs = [
   {
-    label: 'M.S. in Computing, AI, and Data in Education (CADE)',
+    degree: 'M.S. in Education',
+    concentration: 'Computing, AI, and Data in Education (CADE)',
     url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/computing-ai-and-data-in-education-cade/',
   },
   {
-    label: 'Ph.D. in Education, concentration in Interdisciplinary STEM Education',
+    degree: 'Ph.D. in Education',
+    concentration: 'Teacher Education',
+    specialization: 'Interdisciplinary STEM Education',
     url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/stem-education/',
   },
   {
-    label: 'Ph.D. in Education, concentration in Learning, Design, and Technology (LDT)',
+    degree: 'Ph.D. in Education',
+    concentration: 'Learning, Design, and Technology (LDT)',
     url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/learning-design-and-technology/',
     note: "The LDT concentration requires a Master's degree to be considered for admission.",
   },
@@ -101,8 +105,18 @@ const expect = [
         <ul class="acceptingList">
           {programs.map((p) => (
             <li>
-              <a href={p.url} target="_blank" rel="noopener noreferrer">{p.label}</a>
-              {p.note && <span class="acceptingList__note"> — {p.note}</span>}
+              <a href={p.url} target="_blank" rel="noopener noreferrer">
+                <span class="acceptingList__degree">{p.degree}</span>
+                <span class="acceptingList__concentration">
+                  <span class="acceptingList__tag">Concentration:</span> {p.concentration}
+                </span>
+                {p.specialization && (
+                  <span class="acceptingList__specialization">
+                    <span class="acceptingList__tag">Specialization:</span> {p.specialization}
+                  </span>
+                )}
+              </a>
+              {p.note && <span class="acceptingList__note">{p.note}</span>}
             </li>
           ))}
         </ul>
@@ -229,15 +243,15 @@ const expect = [
   .acceptingList {
     display: flex;
     flex-direction: column;
-    gap: 8px;
+    gap: 16px;
     margin: 0 0 1.2em;
-    max-width: 62ch;
+    max-width: 80ch;
   }
   .acceptingList li {
     position: relative;
     padding-left: 20px;
     font-size: 1.2rem;
-    line-height: 1.55;
+    line-height: 1.5;
     color: var(--charcoal);
   }
   .acceptingList li::before {
@@ -251,12 +265,32 @@ const expect = [
     border-radius: 1px;
   }
   .acceptingList a {
+    display: block;
     color: var(--teal-deep);
     text-decoration: underline;
     text-underline-offset: 3px;
   }
   .acceptingList a:hover { color: var(--black); }
+  .acceptingList__degree {
+    display: block;
+  }
+  .acceptingList__concentration {
+    display: block;
+    padding-left: 1.5em;
+    font-size: 1.05rem;
+  }
+  .acceptingList__specialization {
+    display: block;
+    padding-left: 3em;
+    font-size: 0.95rem;
+  }
+  .acceptingList__tag {
+    font-family: var(--font-serif);
+    color: var(--charcoal);
+  }
   .acceptingList__note {
+    display: block;
+    margin-top: 4px;
     font-size: 0.95rem;
     color: var(--charcoal-muted, var(--charcoal));
     opacity: 0.75;
