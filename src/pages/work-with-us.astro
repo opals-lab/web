@@ -17,12 +17,13 @@ const programs = [
     url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/computing-ai-and-data-in-education-cade/',
   },
   {
-    label: 'Ph.D. in Teacher Education',
+    label: 'Ph.D. in Education, concentration in Interdisciplinary STEM Education',
     url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/stem-education/',
   },
   {
-    label: 'Ph.D. in Learning, Design, and Technology (LDT)',
+    label: 'Ph.D. in Education, concentration in Learning, Design, and Technology (LDT)',
     url: 'https://cehhs.utk.edu/tpte/about-tpte/interdisciplinary-learning-and-teaching-ilt-in-early-childhood-design-and-technology-and-stem-unit/learning-design-and-technology/',
+    note: "The LDT concentration requires a Master's degree to be considered for admission.",
   },
 ];
 
@@ -99,7 +100,10 @@ const expect = [
         <p class="lede">Dr. Boles is currently accepting students for the:</p>
         <ul class="acceptingList">
           {programs.map((p) => (
-            <li><a href={p.url} target="_blank" rel="noopener noreferrer">{p.label}</a></li>
+            <li>
+              <a href={p.url} target="_blank" rel="noopener noreferrer">{p.label}</a>
+              {p.note && <span class="acceptingList__note"> — {p.note}</span>}
+            </li>
           ))}
         </ul>
         <p class="lede">
@@ -252,4 +256,9 @@ const expect = [
     text-underline-offset: 3px;
   }
   .acceptingList a:hover { color: var(--black); }
+  .acceptingList__note {
+    font-size: 0.95rem;
+    color: var(--charcoal-muted, var(--charcoal));
+    opacity: 0.75;
+  }
 </style>
